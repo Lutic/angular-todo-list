@@ -1,0 +1,38 @@
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>Description</th>
+        <th>Done</th>
+        <th>Deadline</th>
+        <th>Responsible</th>
+        <th>Est. Hours</th>
+        <th class="text-right">Commands</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat=" item in $ctrl.todo.items | showItems: $ctrl.showComplete | orderBy:'action' ">
+        <td>{{item.action}}</td>
+        <td>
+            <input type="checkbox" ng-model="item.done">
+            {{item.done ? 'Yes' : 'No'}}
+        </td>
+        <td>{{item.deadline}}</td>
+        <td>{{item.responsible}}</td>
+        <td>{{item.estimation}}</td>
+        <td class="text-right">
+            <button
+              type="button"
+              class="btn btn-primary">
+									<span class="glyphicon glyphicon-edit" aria-hidden="true"
+                        title="Edit"></span>
+            </button>
+            <button
+              type="button"
+              class="btn btn-danger" ng-click="$ctrl.deleteItem($ctrl.todo.items, item.id)">
+									<span class="glyphicon glyphicon-trash" aria-hidden="true"
+                        title="Delete"></span>
+            </button>
+        </td>
+    </tr>
+    </tbody>
+</table>

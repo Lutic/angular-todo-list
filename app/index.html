@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html ng-controller="Todo as $ctrl">
+<head>
+	<meta charset="utf-8">
+	<title>{{::$ctrl.todo.user}}'s To Do List</title>
+	<link href="vendor/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link href="vendor/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet">
+	<link href="css/main.css" rel="stylesheet">
+	<link rel="stylesheet" href="css/ng-cloak.css">
+</head>
+<body ng-cloak>
+	<div class="container">
+
+		<page-header></page-header>
+
+		<todo-item-input></todo-item-input>
+
+		<div class="panel panel-primary">
+			<div class="panel-heading">
+				<span class="glyphicon glyphicon-tasks" aria-hidden="true"></span> To Do List
+			</div>
+			<div class="panel-body">
+
+						<todo-items></todo-items>
+
+
+				<label >Show all tasks <input type="checkbox" ng-model="$ctrl.showComplete"></label>
+
+				<!--<p ng-bind="$ctrl.todo.user"></p>-->
+				<!--<p ng-bind-template="{{$ctrl.todo.user}} - {{$ctrl.todo.user}}"></p>-->
+				<!--<p ng-bind-html="$ctrl.html"></p>-->
+				<!--<p ng-non-bindable>{{1+1}}</p>-->
+			</div>
+		</div>
+	</div>
+
+	<script src="vendor/angular/angular.min.js"></script>
+	<script src="vendor/angular-sanitize/angular-sanitize.min.js"></script>
+	<script src="app.js"></script>
+	<script src="components/todo-items/data.service.js"></script>
+	<script src="components/todo-items/get-todo-list.service.js"></script>
+	<script src="components/page-header/page-header.directive.js"></script>
+	<script src="components/todo-item-input/todo-item-input.directive.js"></script>
+	<script src="components/todo-items/todo-items.directive.js"></script>
+	<script src="show-items.filter.js"></script>
+	<script src="todo.controller.js"></script>
+	<script src="todo-service.factory.js"></script>
+</body>
+</html>

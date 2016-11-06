@@ -1,0 +1,31 @@
+<div class="panel">
+
+  <form novalidate name="newTask">
+      <div class="form-group">
+        <label for="action">Action:</label>
+        <input type="text" id="action" name="action" class="form-control" ng-model="$ctrl.newItem.action" />
+      </div>
+
+      <div class="form-group">
+        <label for="deadline">Deadline</label>
+        <input type="date" id="deadline" name="deadline" class="form-control" ng-model="$ctrl.newItem.deadline" />
+      </div>
+
+      <div class="form-group">
+        <label for="responsible">Responsible for task</label>
+        <input type="text" id="responsible" name="responsible" class="form-control" ng-model="$ctrl.newItem.responsible" />
+      </div>
+
+      <div class="form-group">
+        <label for="estimation">Estimation hours to complete task</label>
+        <input type="number" id="estimation" name="estimation" class="form-control" ng-model="$ctrl.newItem.estimation" />
+      </div>
+
+      <button class="btn btn-primary" ng-click="$ctrl.addNewItem($ctrl.todo.items, $ctrl.newItem)" ng-disabled="!$ctrl.newItem.action">Add</button>
+  </form>
+
+  <!--<pre>-->
+  <!--{{newTask | json}}-->
+  <!--{{newTask.action | json}}-->
+  <!--</pre>-->
+</div>
