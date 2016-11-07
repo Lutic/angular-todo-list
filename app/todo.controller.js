@@ -1,20 +1,26 @@
 (function () {
 
-  "use strict";
+    "use strict";
 
-  angular.module("app")
-    .controller("Todo", Todo);
+    angular.module("app")
+        .controller("Todo", Todo);
 
-  function Todo (model, todoService) {
-    let $ctrl = this;
+    function Todo(todoListService, todoService, USER_DATA) {
+        let $ctrl = this;
 
-    $ctrl.todo = model;
-    $ctrl.html = "<span>Vitaliy</span>";
-    $ctrl.showComplete = true;
+        init();
 
-    // $ctrl.incompleteCount = todoService.incompleteCount;
-    // $ctrl.warningLevel = todoService.warningLevel;
-    Object.assign($ctrl, todoService);
-  };
+        // $ctrl.incompleteCount = todoService.incompleteCount;
+        // $ctrl.warningLevel = todoService.warningLevel;
+        Object.assign($ctrl, todoService);
+        Object.assign($ctrl, todoListService);
+
+        console.log($ctrl.editMode());
+
+        function init() {
+            $ctrl.user = USER_DATA;
+            $ctrl.showComplete = true;
+        }
+    }
 
 })();

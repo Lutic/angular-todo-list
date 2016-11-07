@@ -1,14 +1,14 @@
 (function () {
 
-  "use strict";
+    "use strict";
 
-  angular.module("app")
-    .directive("todoItems", todoItems);
+    angular.module("app")
+        .directive("todoItems", todoItems);
 
-  function todoItems () {
-    return {
-      templateUrl: "components/todo-items/todo-items.html"
-    };
-  }
+    function todoItems() {
+        return {
+            templateUrl: "components/todo-items/todo-items.html"
+        };
+    }
 
 })();

@@ -3,8 +3,8 @@
   "use strict";
 
   angular.module("app")
-    .value("model", {
-      "user": "Elnara",
+    .constant("USER_DATA", {
+      "name": "Elnara",
       "userPhoto": "images/buttercup.png"
     });
 

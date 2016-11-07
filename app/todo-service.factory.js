@@ -6,10 +6,18 @@
     .factory("todoService", todoService);
 
   function todoService () {
+    var self = this;
+
+    self.editToggle = false;
+
     //API
     return {
+      Item,
       addNewItem,
       deleteItem,
+      editMode,
+      editItem,
+      saveEditedItem,
       incompleteCount,
       warningLevel
     };
@@ -24,7 +32,6 @@
           responsible: newItem.responsible,
           estimation: newItem.estimation
         });
-        console.log(items);
         newItem.action = "";
       }
     }
@@ -35,6 +42,41 @@
           items.splice(key, 1);
         }
       });
+    }
+
+    function editMode () {
+      return self.editToggle ? true : false;
+    }
+
+
+    function editItem (item) {
+      self.newItem = angular.copy(item);
+
+      self.editToggle = !self.editToggle;
+      editMode();
+
+      angular.forEach(items, (item, key) => {
+        if (item.id === itemId) {
+          self.inputItem = item;
+          Item();
+          console.log(Item());
+        }
+      });
+    }
+
+    function saveEditedItem () {
+      angular.forEach(items, (item, key) => {
+        if (item.id === itemId) {
+          items.splice(key, 1);
+        }
+      });
+
+      self.editToggle = false;
+      editMode();
+    }
+
+    function Item () {
+      return self.inputItem; // ||
     }
 
     function incompleteCount (items) {

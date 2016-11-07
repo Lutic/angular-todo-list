@@ -10,7 +10,7 @@
     </tr>
     </thead>
     <tbody>
-    <tr ng-repeat=" item in $ctrl.todo.items | showItems: $ctrl.showComplete | orderBy:'action' ">
+    <tr ng-repeat="item in $ctrl.getTodoList() | showItems: $ctrl.showComplete | orderBy:'action' track by $index">
         <td>{{item.action}}</td>
         <td>
             <input type="checkbox" ng-model="item.done">
@@ -21,16 +21,16 @@
         <td>{{item.estimation}}</td>
         <td class="text-right">
             <button
-              type="button"
-              class="btn btn-primary">
+                type="button"
+                class="btn btn-primary" ng-click="$ctrl.editItem(item)">
 									<span class="glyphicon glyphicon-edit" aria-hidden="true"
-                        title="Edit"></span>
+                                          title="Edit"></span>
             </button>
             <button
-              type="button"
-              class="btn btn-danger" ng-click="$ctrl.deleteItem($ctrl.todo.items, item.id)">
+                type="button"
+                class="btn btn-danger" ng-click="$ctrl.deleteItem($ctrl.getTodoList(), item.id)">
 									<span class="glyphicon glyphicon-trash" aria-hidden="true"
-                        title="Delete"></span>
+                                          title="Delete"></span>
             </button>
         </td>
     </tr>

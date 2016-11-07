@@ -21,7 +21,8 @@
         <input type="number" id="estimation" name="estimation" class="form-control" ng-model="$ctrl.newItem.estimation" />
       </div>
 
-      <button class="btn btn-primary" ng-click="$ctrl.addNewItem($ctrl.todo.items, $ctrl.newItem)" ng-disabled="!$ctrl.newItem.action">Add</button>
+      <button class="btn btn-primary" ng-click="$ctrl.addNewItem($ctrl.todos, $ctrl.newItem)" ng-hide="$ctrl.editMode()" ng-disabled="!$ctrl.newItem.action">Add</button>
+      <button class="btn btn-primary" ng-click="$ctrl.saveEditedItem($ctrl.todos, $ctrl.newItem)" ng-show="$ctrl.editMode()" ng-disabled="!$ctrl.newItem.action">Save</button>
   </form>
 
   <!--<pre>-->
