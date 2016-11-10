@@ -32,7 +32,7 @@
         
         function setTodoList(list) {
             todos = list;
-            return todos;
+            // return todos;
         }
     }
 

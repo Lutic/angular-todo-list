@@ -62,22 +62,18 @@
     }
 
     function saveEditedItem (items, editItem) {
-
       var editedItems = [];
 
       angular.forEach(items, (item, key) => {
         if (item.id === editItem.id) {
           item = angular.copy(editItem);
-          item.deadline = Date.parse(item.deadline);
+          item.deadline = item.deadline;
           console.log(item);
         }
         editedItems.push(item);
       });
-
       self.editToggle = false;
-      editMode();
       todoListService.setTodoList(editedItems);
-
       clearForm(self.newItem);
       $rootScope.$emit('save-item');
     }
