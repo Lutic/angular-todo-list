@@ -3,7 +3,7 @@
    "id": "1",
    "action": "Estimate...",
    "done": false,
-   "deadline": "09.11.2016",
+   "deadline": "09/11/2016",
    "responsible": "Elnara",
    "estimation": "1"
   },
@@ -11,7 +11,7 @@
    "id": "2",
    "action": "Create...",
    "done": false,
-   "deadline": "09.11.2016",
+   "deadline": "09 11 2016",
    "responsible": "Elnara",
    "estimation": "1"
   },

@@ -6,10 +6,18 @@
         .service("todoListService", todoListService);
 
     function todoListService($http) {
+        // return {
+        //     getTodoList,
+        //     setTodoList
+        // }
+
         let self = this, todos;
 
+        init();
+
         angular.extend(self, {
-            "getTodoList": getTodoList
+            "getTodoList": getTodoList,
+            "setTodoList": setTodoList
         });
 
         function init() {
@@ -17,9 +25,13 @@
                 todos = response.data;
             });
         }
-        init();
 
         function getTodoList() {
+            return todos;
+        }
+        
+        function setTodoList(list) {
+            todos = list;
             return todos;
         }
     }

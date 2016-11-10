@@ -5,18 +5,18 @@
   angular.module("app")
     .factory("todoService", todoService);
 
-  function todoService () {
+  function todoService ($rootScope, todoListService) {
     var self = this;
 
     self.editToggle = false;
 
     //API
     return {
-      Item,
       addNewItem,
       deleteItem,
       editMode,
       editItem,
+      editedItem,
       saveEditedItem,
       incompleteCount,
       warningLevel
@@ -32,7 +32,7 @@
           responsible: newItem.responsible,
           estimation: newItem.estimation
         });
-        newItem.action = "";
+        clearForm(newItem);
       }
     }
 
@@ -55,28 +55,39 @@
       self.editToggle = !self.editToggle;
       editMode();
 
-      angular.forEach(items, (item, key) => {
-        if (item.id === itemId) {
-          self.inputItem = item;
-          Item();
-          console.log(Item());
-        }
-      });
+      $rootScope.$emit('edit-item');
+
     }
 
-    function saveEditedItem () {
+    function saveEditedItem (items, editItem) {
+
+      var editedItems = [];
+
       angular.forEach(items, (item, key) => {
-        if (item.id === itemId) {
-          items.splice(key, 1);
+        if (item.id === editItem.id) {
+          item = angular.copy(editItem);
+          console.log(item);
         }
+        editedItems.push(item);
       });
 
       self.editToggle = false;
       editMode();
+      todoListService.setTodoList(editedItems);
+
+      console.log(editedItems);
     }
 
-    function Item () {
-      return self.inputItem; // ||
+    function editedItem () {
+      console.log('editedItem() ', self.newItem);
+      return self.newItem ? self.newItem : null;
+    }
+
+    function clearForm (item) {
+      console.log(item);
+      for ( var property in item ) {
+        delete item.property;
+      }
     }
 
     function incompleteCount (items) {
@@ -94,6 +105,7 @@
         ? "label-success"
         : "label-warning";
     }
+
   }
 
 })();

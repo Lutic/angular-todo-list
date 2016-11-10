@@ -8,7 +8,7 @@
 
       <div class="form-group">
         <label for="deadline">Deadline</label>
-        <input type="date" id="deadline" name="deadline" class="form-control" ng-model="$ctrl.newItem.deadline" />
+        <input  id="deadline" name="deadline" class="form-control" ng-model="$ctrl.newItem.deadline" /><!--type="date"-->
       </div>
 
       <div class="form-group">
@@ -21,9 +21,11 @@
         <input type="number" id="estimation" name="estimation" class="form-control" ng-model="$ctrl.newItem.estimation" />
       </div>
 
-      <button class="btn btn-primary" ng-click="$ctrl.addNewItem($ctrl.todos, $ctrl.newItem)" ng-hide="$ctrl.editMode()" ng-disabled="!$ctrl.newItem.action">Add</button>
-      <button class="btn btn-primary" ng-click="$ctrl.saveEditedItem($ctrl.todos, $ctrl.newItem)" ng-show="$ctrl.editMode()" ng-disabled="!$ctrl.newItem.action">Save</button>
+      <button class="btn btn-primary" ng-click="$ctrl.addNewItem($ctrl.getTodoList(), $ctrl.newItem)" ng-hide="$ctrl.editMode()" ng-disabled="!$ctrl.newItem.action">Add</button>
+      <button class="btn btn-primary" ng-click="$ctrl.saveEditedItem($ctrl.getTodoList(), $ctrl.newItem)" ng-show="$ctrl.editMode()" ng-disabled="!$ctrl.newItem.action">Save</button>
   </form>
+
+  {{$ctrl.todos}}
 
   <!--<pre>-->
   <!--{{newTask | json}}-->
