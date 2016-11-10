@@ -8,7 +8,7 @@
 
       <div class="form-group">
         <label for="deadline">Deadline</label>
-        <input  id="deadline" name="deadline" class="form-control" ng-model="$ctrl.newItem.deadline" /><!--type="date"-->
+        <input type="date" id="deadline" name="deadline" class="form-control" ng-model="$ctrl.newItem.deadline" />
       </div>
 
       <div class="form-group">
@@ -24,8 +24,6 @@
       <button class="btn btn-primary" ng-click="$ctrl.addNewItem($ctrl.getTodoList(), $ctrl.newItem)" ng-hide="$ctrl.editMode()" ng-disabled="!$ctrl.newItem.action">Add</button>
       <button class="btn btn-primary" ng-click="$ctrl.saveEditedItem($ctrl.getTodoList(), $ctrl.newItem)" ng-show="$ctrl.editMode()" ng-disabled="!$ctrl.newItem.action">Save</button>
   </form>
-
-  {{$ctrl.todos}}
 
   <!--<pre>-->
   <!--{{newTask | json}}-->

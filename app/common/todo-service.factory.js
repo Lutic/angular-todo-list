@@ -9,6 +9,7 @@
     var self = this;
 
     self.editToggle = false;
+    self.newItem = new Item();
 
     //API
     return {
@@ -19,7 +20,8 @@
       editedItem,
       saveEditedItem,
       incompleteCount,
-      warningLevel
+      warningLevel,
+      clearForm
     };
 
     function addNewItem (items, newItem) {
@@ -66,6 +68,7 @@
       angular.forEach(items, (item, key) => {
         if (item.id === editItem.id) {
           item = angular.copy(editItem);
+          item.deadline = Date.parse(item.deadline);
           console.log(item);
         }
         editedItems.push(item);
@@ -75,18 +78,26 @@
       editMode();
       todoListService.setTodoList(editedItems);
 
-      console.log(editedItems);
+      clearForm(self.newItem);
+      $rootScope.$emit('save-item');
     }
 
     function editedItem () {
-      console.log('editedItem() ', self.newItem);
-      return self.newItem ? self.newItem : null;
+      return self.newItem;
+    }
+
+    function Item () {
+      this.id = -1;
+      this.action = '';
+      this.done = false;
+      this.responsible = '';
+      this.estimation = '';
+      this.deadline = '';
     }
 
     function clearForm (item) {
-      console.log(item);
-      for ( var property in item ) {
-        delete item.property;
+      for (let key in item) {
+        item[key] = null;
       }
     }
 
